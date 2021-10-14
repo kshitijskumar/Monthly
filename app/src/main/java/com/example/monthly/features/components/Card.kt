@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -27,20 +28,23 @@ fun DebitCard(
     holderName: String = "Some Rich Guy",
     onClick: ((String) -> Unit) = {}
 ) {
+    val resources = LocalContext.current.resources
+    val displayMetrics = resources.displayMetrics
+    val screenWidth = displayMetrics.widthPixels / displayMetrics.density
     Box(
         modifier = Modifier
-            .padding(18.dp, 4.dp)
-            .fillMaxWidth()
+            .width(screenWidth.dp)
+            .padding(12.dp, 4.dp)
             .aspectRatio(1.65f, false)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Brush.linearGradient(listOf(Color.Black, Color.Gray)))
-            .clickable(onClick = {
-                onClick.invoke(holderName)
-            })
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
-                .padding(8.dp, 4.dp)
+                .clickable(onClick = {
+                    onClick.invoke(holderName)
+                })
+                .padding(8.dp, 8.dp)
         ) {
             Column(
                 modifier = Modifier

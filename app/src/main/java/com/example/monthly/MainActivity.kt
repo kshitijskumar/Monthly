@@ -8,11 +8,14 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.monthly.features.components.DebitCard
+import com.example.monthly.features.components.TabTypes
 import com.example.monthly.features.mainscreen.MainScreen
 import com.example.monthly.ui.theme.MonthlyTheme
+import com.example.monthly.ui.theme.OffWhite
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +23,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             MonthlyTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
+                Surface(color = OffWhite) {
+                    var selectedTab by remember {
+                        mutableStateOf(TabTypes.ALL)
+                    }
                     MainScreen(
                         cardClick = {
                             Toast.makeText(this, "Holder is $it", Toast.LENGTH_LONG).show()
-                        }
+                        },
+                        tabClick = {
+                            selectedTab = it
+                        },
+                        currSelectedTabTypes = selectedTab
                     )
                 }
             }
@@ -41,6 +51,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     MonthlyTheme {
-        MainScreen()
+        MainScreen(currSelectedTabTypes = TabTypes.ALL)
     }
 }

@@ -23,7 +23,7 @@ fun Greetings(
     ) {
         Text(
             text = "${greetingMsgBasedOnTime(time)}!",
-            fontSize = 12.sp,
+            fontSize = 16.sp,
             fontStyle = FontStyle.Normal,
             color = Color.Gray
         )
@@ -31,7 +31,7 @@ fun Greetings(
             text = username,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
-            fontSize = 18.sp
+            fontSize = 24.sp
         )
     }
 }
