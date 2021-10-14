@@ -27,8 +27,10 @@ fun HomeScreenTabs(
     currSelectedTab: TabTypes
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White),
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Spacer(modifier = Modifier.width(4.dp))
         for (tabs in TabTypes.values()) {

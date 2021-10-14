@@ -18,6 +18,7 @@ import com.example.monthly.ui.theme.MonthlyTheme
 import com.example.monthly.ui.theme.OffWhite
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -47,6 +48,7 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
+@ExperimentalFoundationApi
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
